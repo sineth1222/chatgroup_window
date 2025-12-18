@@ -1,13 +1,7 @@
 const multer = require("multer");
 
-const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        cb(null, 'uploads/') // 'uploads' folder ekk sdnn
-    },
-    filename: function (req, file, cb) {
-        cb(null, Date.now() + '-' + file.originalname)
-    }
-});
+// පින්තූරය Disk එකේ save නොකර Memory එකේ තබා ගනී
+const storage = multer.memoryStorage();
 
 const upload = multer({ storage: storage });
 

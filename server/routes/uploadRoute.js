@@ -14,15 +14,15 @@ router.post("/api/upload", upload.single("image"), async (req, res) => {
     }
 
     // ImageKit weth yawima
-    const fileStream = fs.createReadStream(req.file.path);
+    //const fileStream = fs.createReadStream(req.file.path);
     const response = await imagekit.upload({
-      file: fileStream,
+      file: req.file.buffer,
       fileName: req.file.originalname,
       folder: "chat_images", // ImageKit eke athule hden foldere nama
     });
 
     // Upload unt psse tempary file clear 
-    fs.unlinkSync(req.file.path);
+   // fs.unlinkSync(req.file.path);
 
     // success nam url frontend pass
     res.json({ url: response.url });
