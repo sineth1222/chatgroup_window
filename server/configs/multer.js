@@ -2,7 +2,7 @@ const multer = require("multer");
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, 'uploads/') // 'uploads' folder එක backend root එකේ තිබිය යුතුයි
+        cb(null, 'uploads/') // 'uploads' folder ekk sdnn
     },
     filename: function (req, file, cb) {
         cb(null, Date.now() + '-' + file.originalname)

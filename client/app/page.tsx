@@ -7,12 +7,12 @@ import axios from "axios";
 
 const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:3001";
 
-// Message එකක structure එක
+// Message ekk structure ek
 interface IMessage {
   name: string;
   user: string;
   text?: string;
-  image?: string; // Image URL එක සඳහා
+  image?: string; // Image URL ek
   time: string;
 }
 
@@ -23,7 +23,7 @@ export default function Home() {
   const [name, setName] = useState<string>("");
   const [username, setUsername] = useState<string>("");
   const [chat, setChat] = useState<IMessage[]>([]);
-  const [uploading, setUploading] = useState<boolean>(false); // Upload වෙන බව පෙන්වීමට
+  const [uploading, setUploading] = useState<boolean>(false); // Upload wenbaw penwim(imge ekk)
   
   const scrollRef = useRef<HTMLDivElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -59,7 +59,7 @@ export default function Home() {
     scrollRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [chat]);
 
-  // සාමාන්‍ය Text Message එකක් යැවීම
+  // samnya text msg ekk yawima
   const sendMessage = (): void => {
     if (message.trim() !== "") {
       const messageData: IMessage = { 
@@ -73,7 +73,7 @@ export default function Home() {
     }
   };
 
-  // Image එකක් Upload කර යැවීම
+  // Image ekk upload kr ywim
   const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
@@ -83,7 +83,7 @@ export default function Home() {
     formData.append("image", file);
 
     try {
-      // Backend Upload API එකට යැවීම
+      // Backend Upload API ekt yawima
       const res = await axios.post(`${BACKEND_URL}/api/upload`, formData);
       const imageUrl = res.data.url;
 
@@ -141,7 +141,7 @@ export default function Home() {
                   <p className="text-[10px] font-bold text-blue-400 mb-1">{msg.name}</p>
                 )}
                 
-                {/* පින්තූරයක් තිබේ නම් පෙන්වන්න */}
+                {/* image thiyenm pennan */}
                 {msg.image && (
                   <img src={msg.image} alt="Sent" className="rounded-lg mb-1 max-h-60 w-full object-cover border border-black/10" />
                 )}

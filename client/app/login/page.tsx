@@ -6,7 +6,7 @@ import axios from "axios";
 const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:3001";
 
 export default function LoginPage() {
-  const [showForm, setShowForm] = useState(false); // Welcome screen එක පාලනය කිරීමට
+  const [showForm, setShowForm] = useState(false); // Welcome screen ek ply kirima
   const [isLogin, setIsLogin] = useState(true);
   const [form, setForm] = useState({ name: "", username: "", password: "" });
   const router = useRouter();
@@ -15,7 +15,7 @@ export default function LoginPage() {
     const url = isLogin 
       ? `${BACKEND_URL}/api/auth/login` 
       : `${BACKEND_URL}/api/auth/register`;
-      
+
     try {
       const res = await axios.post(url, form);
       if (isLogin) {
@@ -25,7 +25,7 @@ export default function LoginPage() {
         router.push("/");
       } else {
         alert("Registration Successful! Now please login.");
-        setIsLogin(true); // Register වුණාට පස්සේ auto Login page එකට හරවනවා
+        setIsLogin(true); // Register unt pssse auto login ekt pass krnn
       }
     } catch (err: any) {
       alert(err.response?.data?.error || "Something went wrong!");
@@ -44,7 +44,7 @@ if (!showForm) {
       <div className="z-10 flex flex-col lg:flex-row items-center justify-between w-full max-w-7xl gap-10">
         
         {/* Left Side: Text Content */}
-        <div className="flex-1 text-center lg:text-left">
+        <div className="flex-1 text-center lg:text-left  mt-10">
           <h1 className="text-5xl lg:text-7xl font-extrabold text-white mb-6 tracking-tight">
             Connect <span className="text-blue-500">Instantly.</span>
           </h1>
@@ -64,7 +64,7 @@ if (!showForm) {
         {/* Right Side: Image Content */}
         <div className="flex-1 flex justify-center items-center">
           <div className="relative">
-            {/* මෙතනට ඔයාගේ PNG එකේ Path එක ලබා දෙන්න (उदा: /chat-illustration.png) */}
+            
             <img 
               src="/main1.png" 
               alt="Group Chat Illustration" 
@@ -92,7 +92,7 @@ if (!showForm) {
         </p>
 
         <div className="space-y-4">
-          {/* Register වෙද්දී විතරක් 'Name' field එක පෙන්වනවා */}
+          {/* Register weddi name fiel penn*/}
           {!isLogin && (
             <input 
               className="w-full bg-slate-900 border border-slate-700 p-4 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition" 

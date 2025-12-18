@@ -13,7 +13,7 @@ router.post("/api/upload", upload.single("image"), async (req, res) => {
       return res.status(400).json({ error: "No image provided" });
     }
 
-    // ImageKit වෙත පින්තූරය යැවීම
+    // ImageKit weth yawima
     const fileStream = fs.createReadStream(req.file.path);
     const response = await imagekit.upload({
       file: fileStream,
@@ -21,10 +21,10 @@ router.post("/api/upload", upload.single("image"), async (req, res) => {
       folder: "chat_images", // ImageKit eke athule hden foldere nama
     });
 
-    // Upload වූ පසු Server එකේ ඇති තාවකාලික file එක මකා දැමීම
+    // Upload unt psse tempary file clear 
     fs.unlinkSync(req.file.path);
 
-    // සාර්ථක නම් URL එක Frontend එකට යවනවා
+    // success nam url frontend pass
     res.json({ url: response.url });
 
   } catch (error) {
