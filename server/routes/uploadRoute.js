@@ -1,6 +1,6 @@
 const express = require("express");
 const upload = require("../configs/multer");
-const fs = require("fs");
+//const fs = require("fs");
 const imagekit = require("../configs/imagekit"); 
 //const upload = multer({ dest: "uploads/" }); 
 
