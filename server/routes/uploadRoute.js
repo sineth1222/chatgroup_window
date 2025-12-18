@@ -1,7 +1,7 @@
 const express = require("express");
 const upload = require("../configs/multer");
 const fs = require("fs");
-const imagekit = require("../configs/imageKit"); 
+const imagekit = require("../configs/imagekit"); 
 //const upload = multer({ dest: "uploads/" }); 
 
 const router = express.Router();
