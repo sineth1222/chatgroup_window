@@ -14,9 +14,19 @@ app.use(express.json());
 app.use("/api/auth", authRoutes);
 app.use("/", uploadRoute);
 
+app.get("/", (req, res) => {
+  res.send("K&D Group Chat Server is Running!");
+});
+
 const server = http.createServer(app);
-const io = new Server(server, {
+/*const io = new Server(server, {
   cors: { origin: "http://localhost:3000" }
+});*/
+const io = new Server(server, {
+  cors: { 
+    origin: "*", // දැනට සියලුම origins වලට ඉඩ දෙන්න
+    methods: ["GET", "POST"]
+  }
 });
 
 mongoose.connect(process.env.MONGO_URI).then(() => console.log("DB Connected"));
